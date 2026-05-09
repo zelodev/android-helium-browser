@@ -2,19 +2,13 @@ name: Build
 
 on:
   workflow_dispatch:
-    inputs:
-      runner:
-        description: 'Runner'
-        required: true
-        type: string
-        default: 'ubuntu-latest'
 
 permissions:
   contents: write
 
 jobs:
   build:
-    runs-on: ${{ github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
