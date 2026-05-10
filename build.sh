@@ -123,7 +123,7 @@ mkdir -p out/tmp out/release
 #mv $(find out/Default/apks -name 'Chrome*.apk') out/tmp/$VERSION-armeabi-v7a.apk
 
 #sed -i 's/target_cpu = "arm"/target_cpu = "arm64"/' out/Default/args.gn
-autoninja -C out/Default -j2 chrome_public_apk
+autoninja -C out/Default chrome_public_apk
 mv $(find out/Default/apks -name 'Chrome*.apk') out/tmp/$VERSION-arm64-v8a.apk
 
 export PATH=$PWD/third_party/jdk/current/bin/:$PATH
