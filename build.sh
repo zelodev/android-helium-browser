@@ -94,6 +94,11 @@ enable_reporting = false
 google_api_key = "x"
 google_default_client_id = "x"
 google_default_client_secret = "x"
+use_debug_fission=false
+use_jumbo_build=true
+thin_lto_enable_optimizations=false
+chrome_pgo_phase=0
+enable_nacl=false
 
 use_siso = true
 use_login_database_as_backend = true
@@ -118,7 +123,7 @@ mkdir -p out/tmp out/release
 #mv $(find out/Default/apks -name 'Chrome*.apk') out/tmp/$VERSION-armeabi-v7a.apk
 
 #sed -i 's/target_cpu = "arm"/target_cpu = "arm64"/' out/Default/args.gn
-autoninja -C out/Default chrome_public_apk
+autoninja -C out/Default -j2 chrome_public_apk
 mv $(find out/Default/apks -name 'Chrome*.apk') out/tmp/$VERSION-arm64-v8a.apk
 
 export PATH=$PWD/third_party/jdk/current/bin/:$PATH
